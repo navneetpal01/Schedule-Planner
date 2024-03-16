@@ -41,6 +41,7 @@ private val LightColorScheme = lightColorScheme(
 fun SchedulePlannerTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
+    windowSizeClass: WindowSizeClass,
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
@@ -53,18 +54,40 @@ fun SchedulePlannerTheme(
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
     }
-    val view = LocalView.current
-    if (!view.isInEditMode) {
-        SideEffect {
-            val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
-        }
+
+    val orientation = when{
+        windowSizeClass.width.size > windowSizeClass.height.size -> Orientation.Landscape
+        else -> Orientation.Portrait
     }
 
-    MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
-        content = content
-    )
+    val sizeThatMatters = when(orientation){
+        Orientation.Portrait -> windowSizeClass.width
+        Orientation.Landscape -> windowSizeClass.height
+    }
+
+    val schedulePlannerDimens = when(sizeThatMatters){
+        is WindowSize.Small -> smallSchedulePlannerDimens
+        is WindowSize.Compact -> compactSchedulePlannerDimens
+        is WindowSize.Medium -> mediumSchedulePlannerDimens
+        else -> largeSchedulePlannerDimens
+    }
+
+    ProvidesAppUtils(schedulePlannerDimens = schedulePlannerDimens, orientation = orientation) {
+        MaterialTheme(
+            colorScheme = colorScheme,
+            typography = Typography,
+            content = content
+        )
+    }
+
+}
+
+object AppTheme{
+    val schedulePlannerDimens : SchedulePlannerDimens
+    @Composable
+    get() = LocalSchedulePlannerDimens.current
+
+    val orientation : Orientation
+    @Composable
+    get() = LocalOrientationMode.current
 }
