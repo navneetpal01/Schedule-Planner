@@ -15,7 +15,7 @@ sealed class WindowSize(val size : Int){
 
 data class WindowSizeClass(
     val width : WindowSize,
-    val height : WindowSize
+    val height : WindowSize,
 )
 
 @Composable

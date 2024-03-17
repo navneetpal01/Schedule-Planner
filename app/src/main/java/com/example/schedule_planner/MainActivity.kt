@@ -5,13 +5,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.res.colorResource
+import com.example.schedule_planner.presentation.nvgraph.NavGraph
+import com.example.schedule_planner.presentation.nvgraph.Route
 import com.example.schedule_planner.ui.theme.SchedulePlannerTheme
 import com.example.schedule_planner.ui.theme.rememberWindowSizeClass
 
@@ -27,7 +28,13 @@ class MainActivity : ComponentActivity() {
         setContent {
             val windowSize = rememberWindowSizeClass()
             SchedulePlannerTheme(windowSizeClass = windowSize, darkTheme = false) {
-
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(color = colorResource(id = R.color.System_White))
+                ){
+                    NavGraph(startDestination = Route.AppStartNavigation.route)
+                }
             }
         }
     }
