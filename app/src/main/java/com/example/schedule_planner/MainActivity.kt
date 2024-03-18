@@ -9,8 +9,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.colorResource
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.schedule_planner.presentation.nvgraph.NavGraph
 import com.example.schedule_planner.presentation.nvgraph.Route
 import com.example.schedule_planner.ui.theme.SchedulePlannerTheme
@@ -18,6 +18,7 @@ import com.example.schedule_planner.ui.theme.rememberWindowSizeClass
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         enableEdgeToEdge(
             statusBarStyle = SystemBarStyle.light(
                 android.graphics.Color.TRANSPARENT,
@@ -32,7 +33,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier
                         .fillMaxSize()
                         .background(color = colorResource(id = R.color.System_White))
-                ){
+                ) {
                     NavGraph(startDestination = Route.AppStartNavigation.route)
                 }
             }

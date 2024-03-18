@@ -6,7 +6,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navigation
+import com.example.schedule_planner.presentation.onboarding.OnBoardingScreen
 
 @Composable
 fun NavGraph(
@@ -24,7 +27,16 @@ fun NavGraph(
             navController = navController,
             startDestination = startDestination
         ){
-
+            navigation(
+                route = Route.AppStartNavigation.route,
+                startDestination = Route.OnBoardingScreen.route
+            ){
+                composable(route = Route.OnBoardingScreen.route){
+                    OnBoardingScreen(
+                        statusBarPadding = statusBarPadding
+                    )
+                }
+            }
         }
     }
 }

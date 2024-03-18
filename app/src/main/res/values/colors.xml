@@ -8,7 +8,23 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    //System colors
+    //System colors----------------
     <color name="System_White">#fafafa</color>
+    <color name="System_Blue">#3085fe</color>
+
+
+
+    //System Text colors-----------
+    <color name="Text_Black">#101317</color>
+
+
+
+    //ScreenColors-----------------
+    //OnBoardingScreen
+    <color name="OnBoarding_Bottom_White">#ffffff</color>
+    <color name="OnBoarding_Bottom_Divider">#fbfbfb</color>
+    <color name="OnBoarding_Bottom_UnselectedIndicator">#d9d9d9</color>
+    <color name="OnBoarding_Bottom_FirstButton">#3085fe</color>
+    <color name="OnBoarding_Bottom_Second_Button">#f8f9fa</color>
 
 </resources>

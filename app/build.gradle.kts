@@ -71,6 +71,9 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
+    //Splash Api
+    implementation("androidx.core:core-splashscreen:1.0.0")
+
     //Navigation
     val nav_version = "2.7.6"
     implementation("androidx.navigation:navigation-compose:$nav_version")
