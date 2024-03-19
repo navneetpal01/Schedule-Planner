@@ -26,5 +26,6 @@
     <color name="OnBoarding_Bottom_UnselectedIndicator">#d9d9d9</color>
     <color name="OnBoarding_Bottom_FirstButton">#3085fe</color>
     <color name="OnBoarding_Bottom_Second_Button">#f8f9fa</color>
+    <color name="OnBoarding_Bottom_TextColor">#6a6a6c</color>
 
 </resources>

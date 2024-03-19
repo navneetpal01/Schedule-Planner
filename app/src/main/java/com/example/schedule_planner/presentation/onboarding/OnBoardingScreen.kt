@@ -17,7 +17,7 @@ fun OnBoardingScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-    ){
+    ) {
         OnBoardingTop(
             modifier = Modifier
                 .padding(top = statusBarPadding)
